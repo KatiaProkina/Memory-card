@@ -57,7 +57,8 @@ cards.forEach((card) => {
 });
 
 button.addEventListener("click", function () {
-  firstCard.classList.remove("flip");
-  secondCard.classList.remove("flip");
-  resetBoard();
+  cards.forEach((card) => {
+    //Add Event Listener to every card
+    card.classList.remove("flip");
+  });
 });
