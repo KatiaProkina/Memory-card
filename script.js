@@ -27,11 +27,22 @@ const flipCard = (e) => {
 
 const checkForMatch = () => {
   const isEqual = firstCard.dataset.framework === secondCard.dataset.framework;
-  isEqual ? disabledCards() : unflipCards();
+  if (isEqual) {
+    disabledCards();
+  } else {
+    unflipCards();
+  }
 };
+let po = [];
+
 const disabledCards = () => {
   firstCard.removeEventListener("click", flipCard);
   secondCard.removeEventListener("click", flipCard);
+  po.push(firstCard);
+  po.push(secondCard);
+  if (po.length === cards.length) {
+    button.classList.add("btn-show");
+  }
 };
 
 const unflipCards = () => {
@@ -57,8 +68,5 @@ cards.forEach((card) => {
 });
 
 button.addEventListener("click", function () {
-  cards.forEach((card) => {
-    //Add Event Listener to every card
-    card.classList.remove("flip");
-  });
+  location.reload();
 });
